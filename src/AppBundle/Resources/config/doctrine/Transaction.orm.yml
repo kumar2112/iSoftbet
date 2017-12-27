@@ -1,0 +1,20 @@
+AppBundle\Entity\Transaction:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Entity\TransactionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        customer:
+            type: object
+        amount:
+            type: decimal
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+    lifecycleCallbacks: {  }

@@ -1,0 +1,22 @@
+AppBundle\Entity\Customer:
+    type: entity
+    table: customer
+    repositoryClass: AppBundle\Entity\CustomerRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '256'
+        cnp:
+            type: string
+            length: '256'
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+    lifecycleCallbacks: {  }

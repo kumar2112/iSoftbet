@@ -1,0 +1,15 @@
+customer_list:
+    path:     customer/list
+    defaults: { _controller: AppBundle:Customer:list }
+
+customer_add:
+    path:     customer/add
+    defaults: { _controller: AppBundle:Customer:add }
+
+transaction_add:
+    path:     transaction/add
+    defaults: { _controller: AppBundle:Transaction:add }
+
+transaction_list:
+    path:     transaction/list
+    defaults: { _controller: AppBundle:Transaction:list }
