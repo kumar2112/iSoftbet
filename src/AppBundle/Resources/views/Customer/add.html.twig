@@ -15,20 +15,20 @@
           </div>
           <div class='row'>
               <div class="col-md-12">
-                    {{ form_start(form) }}
-                    <div class="form-group">
-                        <lable>Customer Name</lable>
-                        {{form_widget(form.name,{attr:{'class':'form-control'} }) }}
-                    </div>
-                    <div class="form-group">
-                        <lable>Customer CNP</lable>
-                        {{form_widget(form.cnp,{attr:{'class':'form-control'} }) }}
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-default">Create Customer</a>
-                    </div>
+                    <form method="post" action="{{path('customer_create')}}" id="add_customer_form" name="add_customer_form" novalidate="1">
+                          <div class="form-group">
+                              <lable>Customer Cnp(Customer Id)</lable>
+                              <input type="text" id="form_cnp" name="cnp" required="required" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <lable>Customer Name</lable>
+                              <input type="text" id="form_name" name="name" required="required" class="form-control">
+                          </div>
 
-                    {{ form_end(form) }}
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-default">Create Customer</a>
+                          </div>
+                    </form>
               </div>
           </div>
     </div>

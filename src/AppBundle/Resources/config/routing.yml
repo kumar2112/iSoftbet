@@ -6,6 +6,11 @@ customer_add:
     path:     customer/add
     defaults: { _controller: AppBundle:Customer:add }
 
+customer_create:
+    path:     customer/create
+    defaults: { _controller: AppBundle:Customer:create }
+    methods: [POST]
+
 transaction_add:
     path:     transaction/add
     defaults: { _controller: AppBundle:Transaction:add }

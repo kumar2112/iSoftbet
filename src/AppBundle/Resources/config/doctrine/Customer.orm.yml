@@ -9,12 +9,13 @@ AppBundle\Entity\Customer:
             generator:
                 strategy: AUTO
     fields:
+        cnp:
+            type: integer
+            length: 11
         name:
             type: string
             length: '256'
-        cnp:
-            type: string
-            length: '256'
+
         createdAt:
             type: datetime
         updatedAt:
