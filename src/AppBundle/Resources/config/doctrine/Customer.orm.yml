@@ -15,9 +15,13 @@ AppBundle\Entity\Customer:
         name:
             type: string
             length: '256'
-
+        balance:
+            type: decimal
+            precision: 15
+            scale: 2
         createdAt:
             type: datetime
+            nullable: true
         updatedAt:
             type: datetime
             nullable: true

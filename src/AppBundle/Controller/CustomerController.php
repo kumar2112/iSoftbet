@@ -59,6 +59,7 @@ class CustomerController extends Controller
            }else{
                  $customer->setName($name);
                  $customer->setCnp($cnp);
+                 $customer->setBalance(0.00);
                  $customer->setCreatedat(new \DateTime('NOW'));
                  $em->persist($customer);
                  $em->flush();

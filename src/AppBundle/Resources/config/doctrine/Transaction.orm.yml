@@ -11,14 +11,18 @@ AppBundle\Entity\Transaction:
     fields:
         amount:
             type: decimal
+            precision: 15
+            scale: 2
         type:
             type: string
             length: 100
             column: transaction_type
         createdAt:
             type: datetime
+            nullable: true
         updatedAt:
             type: datetime
+            nullable: true
     manyToOne:
         customer:
             targetEntity: AppBundle\Entity\Customer

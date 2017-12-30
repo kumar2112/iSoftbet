@@ -6,7 +6,7 @@
 {% block content  %}
     <div class="content">
           <div class='row text-center'>
-                <div class="col-md-12"
+                <div class="col-md-12">
                     <h2> Add New Customer</h2>
                     <h2 class="text-left">
                         <a href="{{path('customer_list')}}" class="btn btn-default" style="float:right">BACK TO CUSTOMER LIST</a>
@@ -15,7 +15,7 @@
           </div>
           <div class='row'>
                <div class="col-md-12">
-                   <div class="alert alert-success">  </div>
+                   
                     <form method="post" action="{{path('customer_create')}}" id="add_customer_form" name="add_customer_form" novalidate="1">
                           <div class="form-group">
                               <lable>Customer Cnp(Customer Id)</lable>

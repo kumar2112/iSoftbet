@@ -37,7 +37,7 @@
                   <td>{{transaction.getUpdatedat|date('Y-m-d') }}</td>
                   <td>
                         <a href="{{path('transaction_edit',{'transactionid':transaction.getId} )}}" class="btn btn-default">EDIT</a>
-                        <a href="{{path('transaction_delete',{'transactionid':transaction.getId} )}}" class="btn btn-default" onclick="deleteTransaction(this)">DELETE</a>
+                        <a href="{{path('transaction_delete',{'transactionid':transaction.getId} )}}" class="btn btn-default" onclick="return deleteTransaction(this)">DELETE</a>
                   </td>
 
                 </tr>

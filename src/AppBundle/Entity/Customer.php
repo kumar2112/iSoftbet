@@ -38,7 +38,7 @@ class Customer
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -61,7 +61,7 @@ class Customer
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -84,11 +84,35 @@ class Customer
     /**
      * Get cnp
      *
-     * @return string 
+     * @return string
      */
     public function getCnp()
     {
         return $this->cnp;
+    }
+
+    private $balance;
+    /**
+     * Set balacnce
+     *
+     * @param decimal balacnce
+     * @return Customer
+     */
+    public function setBalance($balance)
+    {
+        $this->balance = $balance;
+
+        return $this;
+    }
+
+    /**
+     * Get balance
+     *
+     * @return decimal
+     */
+    public function getBalance()
+    {
+        return $this->balance;
     }
 
     /**
@@ -107,7 +131,7 @@ class Customer
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -130,7 +154,7 @@ class Customer
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {

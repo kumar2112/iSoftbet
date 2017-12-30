@@ -19,6 +19,7 @@
             <th scope="col">#Customer Id</th>
             <th scope="col">First Name</th>
             <th scope="col">Cnp</th>
+            <th scope="col">Balance</th>
             <th scope="col">Created @</th>
           </tr>
         </thead>
@@ -29,6 +30,7 @@
                 <th scope="row">#{{customer.getId}}</th>
                 <td>{{customer.getName }}</td>
                 <td>{{customer.getCnp }}</td>
+                <td>{{customer.getBalance }}</td>
                 <td>{{customer.getCreatedat|date('Y-m-d') }}</td>
               </tr>
           {% endfor %}

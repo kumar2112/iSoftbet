@@ -13,7 +13,8 @@ CustomerForm.submit(function(){
             type: 'post',
             success:function(data){
                 if(data.status=="success"){
-                      jQuery(".alert-sucess").html("<strong>Customer added successfully</strong>");
+                      alert("Customer added Successfully");
+                       locatio.reload();
                 }else if(data.status=="failed"){
                   $.each( data.error, function( index, value ){
                       jQuery("#form_"+index).parent().find("span").remove();
@@ -37,7 +38,8 @@ TransactionForm.submit(function(){
             type: 'post',
             success:function(data){
                 if(data.status=="success"){
-                      alert('Ok');
+                     alert("Transaction Completed Succesfully");
+                     location.reload();
                 }else if(data.status=="failed"){
                   $.each( data.error, function( index, value ){
                       jQuery("#form_"+index).parent().find("span").remove();
@@ -60,7 +62,8 @@ TransactionUpdateForm.submit(function(){
             type: 'post',
             success:function(data){
                 if(data.status=="success"){
-                      alert('Ok');
+                      alert('Transaction updated successfully');
+                      location.reload();
                 }else if(data.status=="failed"){
                   $.each( data.error, function( index, value ){
                       jQuery("#form_"+index).parent().find("span").remove();
@@ -75,6 +78,14 @@ TransactionUpdateForm.submit(function(){
 
 // Delete Transaction function
 function deleteTransaction(el){
-     var =el.attr('href');
-     return false;
+      var href=el.href;
+      var ans=confirm("Transaction will be deleted permanently.");
+      if(ans==true){
+         jQuery.get(href,function(data){
+
+                alert("Transaction deleted successfully");
+                location.reload();
+         });
+      }
+      return false;
 }
