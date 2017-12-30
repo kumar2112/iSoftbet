@@ -35,7 +35,7 @@ security:
 
     access_control:
         - { path: ^/app/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        
+
         - { path: ^/app/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/app/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/app/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }

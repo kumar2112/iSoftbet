@@ -135,7 +135,50 @@ class TransactionController extends Controller
             $response->setData($responseData);
          }
          return $response;
+      }
 
-    }
+      public function deleteAction($transactionid){
+            $response = new JsonResponse();
+            $responseData=array();
+            $error=array();
+            $em = $this->getDoctrine()->getManager();
+            $transaction=$em->getRepository("AppBundle:Transaction")->findOneBy(array('id'=>$transactionid));
+            if(empty($transactionid)){
+                 $error['transactionid']="Transaction id is mandatory";
+            }else if(empty($transaction)){
+                $error['transactionid']="Invalid Transaction Id";
+            }
+            if(count($error)>0){
+                   $responseData['status']="failed";
+                   $responseData['error']=$error;
+             }else{
+                 $em->remove($transaction);
+                 $em->flush();
+                 $responseData['status']="success";
+             }
+             $response->setData($responseData);
+             return $response;
+      }
+
+      public function getSingleTransactionAction($customerid,$transactionid){
+            $response = new JsonResponse();
+            $responseData=array();
+            $error=array();
+            $em = $this->getDoctrine()->getManager();
+            $customer=$em->getRepository("AppBundle:Customer")->findOneBy(array('cnp'=>trim($customerid)));
+            $transaction=$em->getRepository("AppBundle:Transaction")->findOneBy(array('id'=>$transactionid,'customer'=>$customer));
+            if($transaction){
+                  $responseData['status']="success";
+                  $responseData['transaction']=array('transactionId'=>$transaction->getId(),
+                                                      'amount' =>$transaction->getAmount(),
+                                                      'date'=>$transaction->getCreatedAt()->format('d.m.Y')
+                                                );
+            }else{
+                  $responseData['status']="failed";
+                  $responseData['error']="Invalid transactionid or customerid";
+            }
+            $response->setData($responseData);
+            return $response;
+      }
 
 }

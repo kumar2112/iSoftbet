@@ -16,10 +16,10 @@ transaction_add:
     defaults: { _controller: AppBundle:Transaction:add }
 
 transaction_create:
-    path:     customer/create
+    path:     transaction/create
     defaults: { _controller: AppBundle:Transaction:create }
     methods: [POST]
-    
+
 transaction_list:
     path:     transaction/list
     defaults: { _controller: AppBundle:Transaction:list }
@@ -33,3 +33,17 @@ transaction_update:
     path:     transaction/update
     defaults: { _controller: AppBundle:Transaction:update }
     methods: [POST]
+
+transaction_delete:
+    path:     transaction/delete/{transactionid}
+    defaults: { _controller: AppBundle:Transaction:delete }
+    requirements:
+         transactionid: '\d+'
+
+transaction_single:
+       path:     transaction/{customerid}/{transactionid}
+       defaults: { _controller: AppBundle:Transaction:getSingleTransaction }
+       methods: [GET]
+       requirements:
+            customerid: '\d+'
+            transactionid: '\d+'

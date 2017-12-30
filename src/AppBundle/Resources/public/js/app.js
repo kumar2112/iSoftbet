@@ -71,5 +71,10 @@ TransactionUpdateForm.submit(function(){
       });
       return false;
 });
-
 });//End of Document
+
+// Delete Transaction function
+function deleteTransaction(el){
+     var =el.attr('href');
+     return false;
+}
