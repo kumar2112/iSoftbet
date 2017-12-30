@@ -10,8 +10,8 @@ AppBundle\Entity\Customer:
                 strategy: AUTO
     fields:
         cnp:
-            type: integer
-            length: 11
+            type: string
+            length: 256
         name:
             type: string
             length: '256'
@@ -20,4 +20,5 @@ AppBundle\Entity\Customer:
             type: datetime
         updatedAt:
             type: datetime
+            nullable: true
     lifecycleCallbacks: {  }

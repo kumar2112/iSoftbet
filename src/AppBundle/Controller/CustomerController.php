@@ -34,7 +34,7 @@ class CustomerController extends Controller
              $cnp=$request->request->get('cnp');
              $name=$request->request->get('name');
 
-             $cnpMatch='/^[0-9]{14}/';
+             $cnpMatch='/^[0-9]{14}$/';
              if(empty($cnp)){
                  $error['cnp']="Account number is mandatory";
              }else if(!preg_match($cnpMatch,$cnp,$match)){
@@ -50,8 +50,8 @@ class CustomerController extends Controller
                                WHERE c.cnp = :cnp'
                            )->setParameter('cnp', $cnp)
                             ->execute();
-            if($customerCount[0][total]>0){
-                  $error['cnp']="Account number is holded by an customer";
+            if($customerCount[0]['total']>0){
+                  $error['cnp']="Account number is holded by a customer";
             }
             if(count($error)>0){
                   $responseData['status']="failed";

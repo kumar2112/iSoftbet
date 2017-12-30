@@ -15,25 +15,26 @@
           </div>
           <div class='row'>
               <div class="col-md-12">
-                    <form method="post" action="{{path('transaction_create')}}" id="create_transaction_form" name="create_transaction_form" novalidate="1">
+                    <form method="post" action="{{path('transaction_update')}}" id="upadate_transaction_form" name="upadate_transaction_form" novalidate="1">
                          <div class="form-group">
                              <lable>Customer Cnp(Customer Id)</lable>
-                             <input type="text" id="form_cnp" name="cnp" required="required" class="form-control">
+                             <input type="text" id="form_cnp" name="cnp" required="required" class="form-control" value="{{transaction.getCustomer.getCnp}}">
                          </div>
                          <div class="form-group">
                              <lable>Amount</lable>
-                             <input type="number" id="form_amount" name="amount" required="required" class="form-control">
+                             <input type="number" id="form_amount" name="amount" required="required" class="form-control"  value="{{transaction.getAmount}}">
                          </div>
                          <div class="form-group">
                              <lable>Transaction Type</lable>
                              <select id="form_type" name="type" class="form-control form-select">
-                                  <option value="D">DEBIT(-)</a>
-                                  <option value="C">CREDIT(+)</a>
+                                  <option value="D" {{transaction.getType=='D'?'selected'}}>DEBIT(-)</a>
+                                  <option value="C" {{transaction.getType=='C'?'selected'}}>CREDIT(+)</a>
                             </select>
                          </div>
 
                          <div class="form-group">
-                             <button type="submit" class="btn btn-default">Process</a>
+                             <input type="hidden" name="id" value="{{transaction.getId}}">
+                             <button type="submit" class="btn btn-default">UPDATE</a>
                          </div>
                    </form>
               </div>

@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-12">
       <h2 class="text-left">Customer List
-        <a href="{{path('customer_add')}}" class="btn btn-default" style="float:right">ADD NEW CUSTOMER</a>
+        <a href="{{path('transaction_add')}}" class="btn btn-default" style="float:right">CREATE NEW TRASACTION</a>
       </h2>
     </div>
 </div>
@@ -16,28 +16,33 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col">#Customer Id</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Cnp</th>
+            <th scope="col">#Transaction Id</th>
+            <th scope="col">CustomerId</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Transaction Type</th>
             <th scope="col">Created @</th>
+            <th scope="col">Updated @</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          {% if customers %}
-          {% for customer in customers %}
-              <tr>
-                <th scope="row">#{{customer.getId}}</th>
-                <td>{{customer.getName }}</td>
-                <td>{{customer.getCnp }}</td>
-                <td>{{customer.getCreatedat|date('Y-m-d') }}</td>
-                <td>
-                    <a href="{{path('customer_add')}}" class="btn btn-default" >EDIT</a>
-                    <a href="{{path('customer_add')}}" class="btn btn-default">DELETE</a>
-                </td>
-              </tr>
-          {% endfor %}
-          {% endif %}
+            {% if transactions %}
+            {% for transaction in transactions %}
+                <tr>
+                  <th scope="row">#{{transaction.getId}}</th>
+                  <td>{{transaction.getCustomer.getCnp }}</td>
+                  <td>{{transaction.getAmount }}</td>
+                  <td>{{transaction.getType=='C'?'CREDIT':'DEBIT'}}</td>
+                  <td>{{transaction.getCreatedat|date('Y-m-d') }}</td>
+                  <td>{{transaction.getUpdatedat|date('Y-m-d') }}</td>
+                  <td>
+                        <a href="{{path('transaction_edit',{'transactionid':transaction.getId} )}}" class="btn btn-default">EDIT</a>
+                        <a href="#" class="btn btn-default">Delete</a>
+                  </td>
+
+                </tr>
+            {% endfor %}
+            {% endif %}
         </tbody>
       </table>
     </div>

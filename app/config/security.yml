@@ -6,7 +6,6 @@ security:
 
     role_hierarchy:
         ROLE_USER: ~
-        ROLE_ADMIN:       ROLE_ADMIN
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
@@ -14,18 +13,36 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
+        dev:
+           pattern:  ^/(_(profiler|wdt)|css|images|js)/
+           security: false
         main:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
-                # csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+                csrf_provider: form.csrf_provider
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
+                default_target_path: customer_list
             logout:
-                path: /app/logout        
-            anonymous:    true
+                path: fos_user_security_logout
+                target: fos_user_security_login
+            anonymous:    ~
+            http_basic:
+                provider: fos_userbundle
+                #switch_user: true
+
 
     access_control:
-        - { path: ^app/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^app/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^app/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^app/admin/, role: ROLE_ADMIN }
-        - { path: ^app/dashboard$, role: ROLE_USER }
+        - { path: ^/app/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        
+        - { path: ^/app/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/app/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/app/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^app/admin/, role: [ROLE_ADMIN] }
+        - { path: ^/app/dashboard$, role: [ROLE_USER] }
+        - { path: ^/app/customer/*, role: [ROLE_USER] }
+        - { path: ^/app/transaction/*, role: [ROLE_USER] }
+
+    acl:
+        connection: default

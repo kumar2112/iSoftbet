@@ -15,6 +15,21 @@ transaction_add:
     path:     transaction/add
     defaults: { _controller: AppBundle:Transaction:add }
 
+transaction_create:
+    path:     customer/create
+    defaults: { _controller: AppBundle:Transaction:create }
+    methods: [POST]
+    
 transaction_list:
     path:     transaction/list
     defaults: { _controller: AppBundle:Transaction:list }
+
+transaction_edit:
+    path:     transaction/edit/{transactionid}
+    defaults: { _controller: AppBundle:Transaction:edit }
+    requirements:
+        transactionid: '\d+'
+transaction_update:
+    path:     transaction/update
+    defaults: { _controller: AppBundle:Transaction:update }
+    methods: [POST]

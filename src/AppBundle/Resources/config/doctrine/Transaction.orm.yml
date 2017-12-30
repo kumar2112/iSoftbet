@@ -1,6 +1,6 @@
 AppBundle\Entity\Transaction:
     type: entity
-    table: null
+    table: transaction
     repositoryClass: AppBundle\Entity\TransactionRepository
     id:
         id:
@@ -9,12 +9,20 @@ AppBundle\Entity\Transaction:
             generator:
                 strategy: AUTO
     fields:
-        customer:
-            type: object
         amount:
             type: decimal
+        type:
+            type: string
+            length: 100
+            column: transaction_type
         createdAt:
             type: datetime
         updatedAt:
             type: datetime
+    manyToOne:
+        customer:
+            targetEntity: AppBundle\Entity\Customer
+            inversedBy: transaction
+            joinColumn:
+                column: customer_id
     lifecycleCallbacks: {  }

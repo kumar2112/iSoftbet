@@ -25,6 +25,11 @@ class Transaction
     private $amount;
 
     /**
+     * @var string
+     */
+    private $type;
+
+    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -61,7 +66,7 @@ class Transaction
     /**
      * Get customer
      *
-     * @return \AppBundle\Entity\Customer 
+     * @return \AppBundle\Entity\Customer
      */
     public function getCustomer()
     {
@@ -89,6 +94,29 @@ class Transaction
     public function getAmount()
     {
         return $this->amount;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Transaction
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
