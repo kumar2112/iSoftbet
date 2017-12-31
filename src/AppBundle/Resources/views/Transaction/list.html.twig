@@ -10,7 +10,33 @@
       </h2>
     </div>
 </div>
-
+<div class="row">
+     <form method="post" action="{{path('transaction_create')}}" id="filter_transaction_form" name="filter_transaction_form" novalidate="1">
+     <div class="col-md-3">
+           <div class="form-group">
+               <lable>Amount</lable>
+               <input type="number" id="form_amount" name="amount" required="required" class="form-control">
+           </div>
+     </div>
+     <div class="col-md-3">
+         <div class="form-group">
+             <lable>Date</lable>
+             <input type="date" id="form_amount" name="amount"  class="form-control" >
+         </div>
+     </div>
+     <div class="col-md-3">
+             <div class="form-group">
+                 <lable>Customer Id</lable>
+                 <input type="number" id="form_amount" name="amount" required="required" class="form-control">
+             </div>
+     </div>
+     <div class="col-md-3">
+             <div class="form-group">
+                 <button type="submit" class="form-control btn btn-default" style="margin-top:18px">FILTER</button>
+             </div>
+     </div>
+     </form>
+</div>
 <div class="row">
     <div class="col-md-12">
       <table class="table table-bordered">

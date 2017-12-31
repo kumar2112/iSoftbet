@@ -47,3 +47,10 @@ transaction_single:
        requirements:
             customerid: '\d+'
             transactionid: '\d+'
+transaction_filter:
+       path:     transaction/{customerid}/{transactionid}
+       defaults: { _controller: AppBundle:Transaction:getSingleTransaction }
+       methods: [GET]
+       requirements:
+            customerid: '\d+'
+            transactionid: '\d+'
